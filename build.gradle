@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'application'
+}
+
+group 'me.remence'
+version '1.0'
+
+mainClassName = 'me.remence.thehokage.TheHokage'
+
+repositories {
+    mavenCentral() // for transitive dependencies    :thonking:
+    maven { url = 'https://m2.dv8tion.net/releases' }
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:4.3.0_346'
+}
