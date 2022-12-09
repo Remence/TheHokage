@@ -72,7 +72,7 @@ public class PollCommand extends ListenerAdapter {
                 .map(OptionMapping::getAsString)
                 .collect(Collectors.toList());
 
-        pollEmbed.setColor(Color.BLACK);
+        pollEmbed.setColor(Color.RED);
         pollEmbed.setTitle("**POLL - " + titleOption.getAsString() + "**");
         pollEmbed.setDescription(descriptionOption.getAsString() + " \n");
         pollEmbed.setFooter("Please react to the letter corresponding to your vote.");
