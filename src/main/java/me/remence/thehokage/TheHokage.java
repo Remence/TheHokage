@@ -4,7 +4,7 @@ import me.remence.thehokage.commands.AboutMeCommand;
 import me.remence.thehokage.commands.EatMiloCommand;
 import me.remence.thehokage.commands.PollCommand;
 import me.remence.thehokage.listeners.JoinLeaveListener;
-import me.remence.thehokage.utils.Constant;
+import me.remence.thehokage.utils.Constants;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -20,7 +20,7 @@ import javax.security.auth.login.LoginException;
 public class TheHokage extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException, InterruptedException {
-        JDA jda = JDABuilder.createDefault(Constant.TOKEN)
+        JDA jda = JDABuilder.createDefault(Constants.TOKEN)
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new AboutMeCommand()) // []?
                 .addEventListeners(new JoinLeaveListener())
