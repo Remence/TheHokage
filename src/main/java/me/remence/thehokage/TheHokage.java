@@ -3,6 +3,7 @@ package me.remence.thehokage;
 import me.remence.thehokage.commands.AboutMeCommand;
 import me.remence.thehokage.commands.EatMiloCommand;
 import me.remence.thehokage.commands.PollCommand;
+import me.remence.thehokage.commands.TruthDareCommand;
 import me.remence.thehokage.listeners.JoinLeaveListener;
 import me.remence.thehokage.utils.Constants;
 import net.dv8tion.jda.api.JDA;
@@ -26,6 +27,7 @@ public class TheHokage extends ListenerAdapter {
                 .addEventListeners(new JoinLeaveListener())
                 .addEventListeners(new EatMiloCommand())
                 .addEventListeners(new PollCommand())
+                .addEventListeners(new TruthDareCommand())
                 .setActivity(Activity.watching("Naruto"))
                 .setStatus(OnlineStatus.ONLINE)
                 .build().awaitReady();
@@ -40,6 +42,7 @@ public class TheHokage extends ListenerAdapter {
                             .addOption(OptionType.STRING, "title", "Title the poll.", true)
                             .addOption(OptionType.STRING, "description", "Describe what the poll is about.", true)
                             .addOption(OptionType.CHANNEL, "channel", "Channel to send this poll to.", true)
+                            .addOption(OptionType.BOOLEAN, "pingeveryone", "@everyone with your poll?", true)
                             .addOption(OptionType.STRING, "opt-1", "Option for the poll.", true)
                             .addOption(OptionType.STRING, "opt-2", "Option for the poll.", true)
                             .addOption(OptionType.STRING, "opt-3", "Option for the poll.", false)
