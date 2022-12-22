@@ -62,7 +62,8 @@ public class TheHokage extends ListenerAdapter {
                             .addOption(OptionType.STRING, "opt-17", "Option for the poll.", false)
                             .addOption(OptionType.STRING, "opt-18", "Option for the poll.", false)
                             .addOption(OptionType.STRING, "opt-19", "Option for the poll.", false)
-                            .addOption(OptionType.STRING, "opt-20", "Option for the poll.", false)
+                            .addOption(OptionType.STRING, "opt-20", "Option for the poll.", false),
+                    Commands.slash("truthordare", "What will you choose?")
             ).queue();
         }
     }

@@ -75,7 +75,7 @@ public class PollCommand extends ListenerAdapter {
         pollEmbed.setColor(Color.RED);
         pollEmbed.setTitle("**POLL - " + titleOption.getAsString() + "**");
         pollEmbed.setDescription(descriptionOption.getAsString() + " \n");
-        pollEmbed.setFooter("Please react to the letter corresponding to your vote.");
+        pollEmbed.setFooter("Please react to the letter corresponding to your vote.\nPoll sent by: " + event.getUser());
 
         for (int i = 0; i < options.size(); i++) {
             pollEmbed.appendDescription(emoji[i] + " -> " + reasonList[i].getAsString() + "\n");
@@ -91,6 +91,6 @@ public class PollCommand extends ListenerAdapter {
             }
         });
 
-        event.reply("Sent!").setEphemeral(true).queue();
+        event.reply("Your poll was sent sudccessfully!").setEphemeral(true).queue();
     }
 }
