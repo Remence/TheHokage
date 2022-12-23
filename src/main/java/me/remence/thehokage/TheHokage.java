@@ -1,8 +1,8 @@
 package me.remence.thehokage;
 
 import me.remence.thehokage.commands.AboutMeCommand;
-import me.remence.thehokage.commands.EatMiloCommand;
 import me.remence.thehokage.commands.PollCommand;
+import me.remence.thehokage.commands.SayCommand;
 import me.remence.thehokage.commands.TruthDareCommand;
 import me.remence.thehokage.listeners.JoinLeaveListener;
 import me.remence.thehokage.utils.Constants;
@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
+import javax.swing.text.html.Option;
 
 public class TheHokage extends ListenerAdapter {
 
@@ -25,7 +26,7 @@ public class TheHokage extends ListenerAdapter {
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new AboutMeCommand()) // []?
                 .addEventListeners(new JoinLeaveListener())
-                .addEventListeners(new EatMiloCommand())
+                .addEventListeners(new SayCommand())
                 .addEventListeners(new PollCommand())
                 .addEventListeners(new TruthDareCommand())
                 .setActivity(Activity.watching("Naruto"))
@@ -37,7 +38,8 @@ public class TheHokage extends ListenerAdapter {
         if (guild != null) {
             guild.updateCommands().addCommands(
                     Commands.slash("aboutme", "Learn about your account."),
-                    Commands.slash("eatmilo", "Munch on Milo."),
+                    Commands.slash("say", "Say something as the hokage.")
+                            .addOption(OptionType.STRING, "message", "What would you like to say?", true),
                     Commands.slash("poll", "Send a poll for everyone to vote on!")
                             .addOption(OptionType.STRING, "title", "Title the poll.", true)
                             .addOption(OptionType.STRING, "description", "Describe what the poll is about.", true)

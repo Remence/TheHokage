@@ -91,6 +91,6 @@ public class PollCommand extends ListenerAdapter {
             }
         });
 
-        event.reply("Your poll was sent sudccessfully!").setEphemeral(true).queue();
+        event.reply("Your poll was sent successfully!").setEphemeral(true).queue();
     }
 }
