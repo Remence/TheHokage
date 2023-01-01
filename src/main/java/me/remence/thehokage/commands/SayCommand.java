@@ -17,8 +17,8 @@ public class SayCommand extends ListenerAdapter {
         String userMessage = messageOption.getAsString();
         TextChannel textChannel = event.getTextChannel();
 
-        textChannel.sendMessage(userMessage);
+        textChannel.sendMessage(userMessage).queue();
 
-        event.reply("Your message was sent successfully!").setEphemeral(true);
+        event.reply("Your message was sent successfully!").setEphemeral(true).queue();
     }
 }

@@ -1,0 +1,50 @@
+package me.remence.thehokage.commands;
+
+import me.remence.thehokage.utils.Truths;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.components.buttons.Button;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+
+public class StudyCommand extends ListenerAdapter {
+    @Override
+    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
+        if (!(event.getName().equals("sendstudyreaction"))) return;
+
+        EmbedBuilder studyEmbed = new EmbedBuilder();
+        studyEmbed.setTitle("**STUDY WITH REMENCE**");
+        studyEmbed.setDescription("Feeling unmotivated to study? Click the button below to get pinged" +
+                "whenever Remence begins his study sessions.\n **NOTE:** Remence follows the 60/10" +
+                "pomodoro technique for studying. You don't have to follow the same method, but it's advised.\n");
+        studyEmbed.setColor(Color.red);
+        studyEmbed.setFooter("*You are not obligated to join every study session if you opt-in*");
+
+        event.replyEmbeds(studyEmbed.build())
+                .addActionRow(
+                        Button.primary("opt", "Toggle")
+                ).queue();
+    }
+
+    @Override
+    public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
+        if (event.getButton().getId().equals("toggle")) {
+            Member member = event.getMember();
+            Role studyRole = event.getGuild().getRoleById(942580523648290847l);
+
+            if (!(member.getRoles().contains(studyRole))) {
+                event.getGuild().addRoleToMember(member, studyRole);
+                event.reply("You opted in.").setEphemeral(true).queue();
+            } else if (member.getRoles().contains(studyRole)) {
+                event.getGuild().removeRoleFromMember(member, studyRole);
+                event.reply("You opted out.").setEphemeral(true).queue();
+            }
+        }
+    }
+}
