@@ -1,9 +1,6 @@
 package me.remence.thehokage;
 
-import me.remence.thehokage.commands.AboutMeCommand;
-import me.remence.thehokage.commands.PollCommand;
-import me.remence.thehokage.commands.SayCommand;
-import me.remence.thehokage.commands.TruthDareCommand;
+import me.remence.thehokage.commands.*;
 import me.remence.thehokage.listeners.JoinLeaveListener;
 import me.remence.thehokage.utils.Constants;
 import net.dv8tion.jda.api.JDA;
@@ -29,6 +26,7 @@ public class TheHokage extends ListenerAdapter {
                 .addEventListeners(new SayCommand())
                 .addEventListeners(new PollCommand())
                 .addEventListeners(new TruthDareCommand())
+                .addEventListeners(new StudyCommand())
                 .setActivity(Activity.watching("Naruto"))
                 .setStatus(OnlineStatus.ONLINE)
                 .build().awaitReady();
@@ -65,7 +63,9 @@ public class TheHokage extends ListenerAdapter {
                             .addOption(OptionType.STRING, "opt-18", "Option for the poll.", false)
                             .addOption(OptionType.STRING, "opt-19", "Option for the poll.", false)
                             .addOption(OptionType.STRING, "opt-20", "Option for the poll.", false),
-                    Commands.slash("truthordare", "What will you choose?")
+                    Commands.slash("truthordare", "What will you choose?"),
+                    Commands.slash("sendstudyreaction", "Only meant to be sent once."),
+                    Commands.slash("studywithme", "Used when Remence starts a session.")
             ).queue();
         }
     }

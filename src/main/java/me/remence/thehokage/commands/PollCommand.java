@@ -75,7 +75,7 @@ public class PollCommand extends ListenerAdapter {
         pollEmbed.setColor(Color.RED);
         pollEmbed.setTitle("**POLL - " + titleOption.getAsString() + "**");
         pollEmbed.setDescription(descriptionOption.getAsString() + " \n");
-        pollEmbed.setFooter("Please react to the letter corresponding to your vote.\nPoll sent by: " + event.getUser().getName());
+        pollEmbed.setFooter("Poll sent by: " + event.getUser().getName());
 
         for (int i = 0; i < options.size(); i++) {
             pollEmbed.appendDescription(emoji[i] + " -> " + reasonList[i].getAsString() + "\n");
