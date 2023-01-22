@@ -1,6 +1,7 @@
 package me.remence.thehokage.commands;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -82,10 +83,10 @@ public class PollCommand extends ListenerAdapter {
         }
 
         if (pingEveryoneOption.getAsBoolean()) {
-            channelOption.getAsTextChannel().sendMessage("@everyone").queue();
+            channelOption.getAsChannel().asTextChannel().sendMessage("@everyone").queue();
         }
 
-        channelOption.getAsTextChannel().sendMessageEmbeds(pollEmbed.build()).queue(reactPoll -> {
+        channelOption.getAsChannel().asTextChannel().sendMessageEmbeds(pollEmbed.build()).queue(reactPoll -> {
             for (int j = 0; j < options.size(); j++) {
                 reactPoll.addReaction(Emoji.fromFormatted(emoji[j])).queue();
             }

@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.util.Random;
 
 public class TruthDareCommand extends ListenerAdapter {
 
@@ -51,7 +52,15 @@ public class TruthDareCommand extends ListenerAdapter {
 
             event.replyEmbeds(dareEmbed.build()).queue();
         } else if (event.getButton().getId().equals("random-option")) {
-            // Random button logic.
+            EmbedBuilder randomEmbed = new EmbedBuilder();
+            Random decide = new Random();
+            int decider = decide.nextInt(2);
+
+            if (decider == 0) {
+                Truths truths = new Truths();
+                // Set truths here
+            }
+            // Set dares here
         }
     }
 

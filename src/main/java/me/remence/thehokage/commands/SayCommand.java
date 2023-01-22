@@ -1,6 +1,6 @@
 package me.remence.thehokage.commands;
 
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
@@ -15,7 +15,7 @@ public class SayCommand extends ListenerAdapter {
         OptionMapping messageOption = event.getOption("message");
 
         String userMessage = messageOption.getAsString();
-        TextChannel textChannel = event.getTextChannel();
+        TextChannel textChannel = event.getChannel().asTextChannel();
 
         textChannel.sendMessage(userMessage).queue();
 

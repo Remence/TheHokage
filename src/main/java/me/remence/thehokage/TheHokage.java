@@ -1,7 +1,6 @@
 package me.remence.thehokage;
 
 import me.remence.thehokage.commands.*;
-import me.remence.thehokage.listeners.JoinLeaveListener;
 import me.remence.thehokage.utils.Constants;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -14,7 +13,6 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
-import javax.swing.text.html.Option;
 
 public class TheHokage extends ListenerAdapter {
 
@@ -22,11 +20,11 @@ public class TheHokage extends ListenerAdapter {
         JDA jda = JDABuilder.createDefault(Constants.TOKEN)
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .addEventListeners(new AboutMeCommand()) // []?
-                .addEventListeners(new JoinLeaveListener())
                 .addEventListeners(new SayCommand())
                 .addEventListeners(new PollCommand())
                 .addEventListeners(new TruthDareCommand())
                 .addEventListeners(new StudyCommand())
+                .addEventListeners(new PomodoroCommand())
                 .setActivity(Activity.watching("Naruto"))
                 .setStatus(OnlineStatus.ONLINE)
                 .build().awaitReady();
@@ -65,7 +63,8 @@ public class TheHokage extends ListenerAdapter {
                             .addOption(OptionType.STRING, "opt-20", "Option for the poll.", false),
                     Commands.slash("truthordare", "What will you choose?"),
                     Commands.slash("sendstudyreaction", "Only meant to be sent once."),
-                    Commands.slash("studywithme", "Used when Remence starts a session.")
+                    Commands.slash("pomodoro start", "Start a pomodoro timer! (50/10)")
+                            .addOption(OptionType.INTEGER, "Number of sessions", "Number of sessions you would like to have.", true)
             ).queue();
         }
     }
