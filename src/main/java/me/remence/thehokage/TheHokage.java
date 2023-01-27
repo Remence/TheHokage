@@ -63,8 +63,7 @@ public class TheHokage extends ListenerAdapter {
                             .addOption(OptionType.STRING, "opt-20", "Option for the poll.", false),
                     Commands.slash("truthordare", "What will you choose?"),
                     Commands.slash("sendstudyreaction", "Only meant to be sent once."),
-                    Commands.slash("pomodoro start", "Start a pomodoro timer! (50/10)")
-                            .addOption(OptionType.INTEGER, "Number of sessions", "Number of sessions you would like to have.", true)
+                    Commands.slash("pomodorostart", "Start a pomodoro timer! (50/10)")
             ).queue();
         }
     }
